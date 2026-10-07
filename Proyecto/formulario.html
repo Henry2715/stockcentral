@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>StockCentral - Registrar producto / venta</title>
+<style>
+  body { font-family: Arial, Helvetica, sans-serif; margin:0; background:#f4f5f7; }
+  .app { display:flex; min-height:600px; }
+  .sidebar { width:210px; background:#1f2430; padding:1.25rem 0; flex-shrink:0; }
+  .sidebar .brand { padding:0 1.25rem 1.25rem; font-weight:600; font-size:16px; color:#fff; border-bottom:1px solid rgba(255,255,255,0.15); margin-bottom:12px; }
+  .sidebar .item { display:flex; align-items:center; gap:10px; padding:9px 20px; font-size:14px; color:#aab0c0; }
+  .sidebar .item.active { background:#3b4a7a; color:#fff; font-weight:500; }
+  .main { flex:1; padding:1.25rem 1.5rem; }
+  .header h2 { margin:0 0 4px; color:#1f2430; }
+  .header p { margin:0 0 1.25rem; color:#6b7280; font-size:13px; }
+  .cols { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .panel { background:#fff; border-radius:10px; padding:1.1rem 1.25rem; box-shadow:0 0 0 0.5px #e2e4ea; }
+  .panel .title { font-size:14px; color:#1f2430; font-weight:600; margin:0 0 14px; display:flex; align-items:center; gap:8px; }
+  .panel .title .dot { width:8px; height:8px; border-radius:50%; }
+  label { display:block; font-size:12px; color:#6b7280; margin:0 0 4px; }
+  .field { margin-bottom:12px; }
+  input, select { width:100%; box-sizing:border-box; padding:8px 10px; border:1px solid #d6d9e0; border-radius:6px; font-size:13px; color:#1f2430; }
+  input:focus, select:focus { outline:2px solid #3b82f6; border-color:#3b82f6; }
+  .btn { display:inline-block; padding:9px 18px; border-radius:6px; font-size:13px; font-weight:600; border:none; cursor:pointer; }
+  .btn.primary { background:#3b82f6; color:#fff; }
+  .btn.success { background:#10b981; color:#fff; }
+  .hint { font-size:11px; color:#9ca3af; margin-top:4px; }
+  .alert { margin-top:12px; padding:10px 12px; border-radius:6px; font-size:12px; }
+  .alert.ok { background:#dcfce7; color:#15803d; }
+  .alert.err { background:#fee2e2; color:#b91c1c; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar">
+    <div class="brand">StockCentral</div>
+    <div class="item">Dashboard</div>
+    <div class="item active">Productos</div>
+    <div class="item">Ventas</div>
+    <div class="item">Configuración</div>
+  </div>
+  <div class="main">
+    <div class="header">
+      <h2>Registrar producto y registrar venta</h2>
+      <p>Flujos correspondientes a RF-01 y RF-02 (FPI-05 / FPI-06)</p>
+    </div>
+    <div class="cols">
+      <div class="panel">
+        <p class="title"><span class="dot" style="background:#3b82f6"></span> Nuevo producto (RF-01)</p>
+        <div class="field">
+          <label>Nombre del producto</label>
+          <input type="text" value="Chaqueta impermeable">
+        </div>
+        <div class="field">
+          <label>Precio (COP)</label>
+          <input type="text" value="89.900">
+        </div>
+        <div class="field">
+          <label>Stock inicial</label>
+          <input type="text" value="18">
+        </div>
+        <div class="field">
+          <label>Categoría</label>
+          <select><option>Ropa</option></select>
+        </div>
+        <button class="btn primary">Guardar producto</button>
+        <div class="alert ok">✓ Producto guardado correctamente (cumple criterio de aceptación RF-01).</div>
+      </div>
+      <div class="panel">
+        <p class="title"><span class="dot" style="background:#10b981"></span> Registrar venta (RF-02)</p>
+        <div class="field">
+          <label>Producto</label>
+          <select><option>Zapatos deportivos — stock disponible: 5</option></select>
+        </div>
+        <div class="field">
+          <label>Cantidad a vender</label>
+          <input type="text" value="8">
+        </div>
+        <button class="btn success">Confirmar venta</button>
+        <div class="alert err">✕ Venta rechazada: stock insuficiente (disponible 5, solicitado 8). Corresponde al caso de prueba CN-02 de la FPI-14.</div>
+        <p class="hint">Este rechazo corresponde al flujo de excepción documentado en el caso de uso "Registrar venta" (FPI-06/FPI-10).</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
